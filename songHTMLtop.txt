@@ -3,7 +3,6 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://ecstatic-cori-7ac946.netlify.com/final.png">
-<script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
 <style>
 body {
   margin: 0;
