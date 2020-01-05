@@ -38,7 +38,7 @@ module.exports = function songMatchOutput(FDCObjectList, res){
         //output percentage
         middle += '<div align="center">\n';
         middle += '<h1> ' + percentMatch +  '% Match </h1>\n';
-        middle += '</div>\n';
+        middle += '<hr></div>\n';
 
         //add back form button to go back to first index
         //then make a new get method in main
