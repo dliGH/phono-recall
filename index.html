@@ -260,7 +260,6 @@ function speed(s) {
    document.getElementById("currentspeed").innerHTML = s;
    spd = s;
 }
-
 var outputToBack;
 function update(){
    outputToBack = "";
@@ -269,18 +268,14 @@ function update(){
    }
    document.getElementById("noteInput").value = outputToBack;
 }
-
   update();
-
 function playSong(){
-
    var songNotesList = [];
    var beatS = 0.2;
    if(spd == "Medium")
       beatS = 0.4;
    else if(spd == "Slow")
       beatS = 0.8;
-
    for(var i = 0; i < 16; i++){
       if(notes[i] == 1){
          if(songNotesList.length != 0){
@@ -298,13 +293,10 @@ function playSong(){
          songNotesList.push(curNote);
       }
    }
-
    //create a synth and connect it to the master output (your speakers)
    var synth = new Tone.Synth().toMaster();
-
    //synth.triggerAttackRelease("C4", 1.0);
    //play a middle 'C' for the duration of an 8th note
-
    
    var id = Tone.Transport.scheduleRepeat(function(time){
       if(songNotesList.length != 0){
@@ -322,10 +314,8 @@ function playSong(){
          }
       }
    }, beatS);
-
    Tone.Transport.start();
 }
-
 </script>
   
 </script>
