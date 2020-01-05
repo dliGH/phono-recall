@@ -11,7 +11,9 @@ let fs = require('fs')
 function main(){
     var midiArray;
 
-    /*fs.readFile('./NeverGonnaGiveYouUp(Karaoke).mid', 'base64', function (err,data) {
+    /*
+    //put in the hard coded file here!!!
+    fs.readFile('./Ending.mid', 'base64', function (err,data) {
         // Parse the obtainer base64 string ...
         midiArray = midiParser.parse(data);
         // done!
