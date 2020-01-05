@@ -121,12 +121,13 @@ function getScore(FDCObject, testString){
             var dist = Math.abs(compIntervalList[j] - testIntervalList[j]);
             dist = Math.min(dist, 12-dist);
             //console.log(dist);
-            score += 84 - (dist*dist + 8*dist);
+            //score += 84 - (dist*dist + 8*dist);
+            score += 1.0 - 0.1*dist - 0.05*dist*dist;
         }
 
         if(score > maxScore) maxScore = score;
     }
-    return maxScore/(84.0*testIntervalList.length);
+    return maxScore/(testIntervalList.length);
 }
 
 
