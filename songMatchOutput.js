@@ -21,10 +21,15 @@ module.exports = function songMatchOutput(FDCObjectList, res){
         //maybe need mp3... not really working yet.
             //trying
         middle += '<div align="center">\n';
-        middle += '<audio controls="controls">'
+        middle += '<audio src="' + FDCObjectList[i].item.mpegPath + '" controls>'
+        + '\nError: your web browser does not support this audio player.'
+        + '</audio>';
+        
+        /*
+        '<audio controls="controls">'
           +  '<source src="' + FDCObjectList[i].item.mpegPath + '" type="audio/mpeg">'
           +  '</audio>';
-        middle += '</div>\n';
+        middle += '</div>\n';*/
         
         //calculate percentage
         var percentMatch = (1-FDCObjectList[i].score)*100;
