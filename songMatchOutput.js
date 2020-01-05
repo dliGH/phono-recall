@@ -18,9 +18,15 @@ module.exports = function songMatchOutput(FDCObjectList, res){
         middle += '<h1> #' + num + ': ' + FDCObjectList[i].item.songTitle +  ' </h1>\n';
         middle += '</div>\n';
         //somehow have a playable midi
-
         //maybe need mp3... not really working yet.
+            //trying
+        middle += '<div align="center">\n';
+        middle += '<audio controls="controls">'
+          +  '<source src="' + FDCObjectList.item. + '" type="audio/mpeg">'
+          +  '</audio>';
 
+        middle += '</div>\n';
+        
         //calculate percentage
         var percentMatch = (1-FDCObjectList[i].score)*100;
         //rounding
