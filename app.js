@@ -11,6 +11,7 @@ let fs = require('fs')
 function main(){
     var midiArray;
 
+    //put in the hard coded file here!!!
     fs.readFile('./Ending.mid', 'base64', function (err,data) {
         // Parse the obtainer base64 string ...
         midiArray = midiParser.parse(data);
