@@ -41,7 +41,7 @@ function createFDCObjectList(lines){
         
         FDCObject.songTitle = lines[lineNum];
         FDCObject.songString = FDCtoString(lines[lineNum + 1]);
-        FDCObject.midiPath = lines[lineNum + 2];
+        FDCObject.mpegPath = lines[lineNum + 2];
 
         FDCObjectList.push(FDCObject);
 
@@ -52,7 +52,10 @@ function createFDCObjectList(lines){
 }
 
 function FDCtoString(FDC){
-    var charCode = "0123456789AB";
+    var charCode = ["0", "1", "2", "3", "4","5", 
+        "6", "7", "8", "9", "A", "B"];
+    //var charCode = ["abcdef", "abcdez", "abcdyz", "abcxyz", "abwxyz", "avwxyz", 
+    //    "uvwxyz", "uvwxyf", "uv"];
     var intervalList = FDC.split(" ");
     var intervalNum = 0;
     var songString = "";
@@ -71,8 +74,8 @@ function getClosestSongs(FDCObjectList, mainSongString){
         includeScore: true,
         threshold: 1.0,
         location: 0,
-        distance: 100,
-        maxPatternLength: 16,
+        distance: Infinity,
+        maxPatternLength: 96,
         minMatchCharLength: 1,
         keys: [
           "songString"
