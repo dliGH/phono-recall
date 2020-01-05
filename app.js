@@ -11,14 +11,16 @@ let fs = require('fs')
 function main(){
     var midiArray;
 
-    fs.readFile('./Ending.mid', 'base64', function (err,data) {
+    /*fs.readFile('./NeverGonnaGiveYouUp(Karaoke).mid', 'base64', function (err,data) {
         // Parse the obtainer base64 string ...
         midiArray = midiParser.parse(data);
         // done!
         console.log(midiArray);
 
         outputMIDI(midiArray);
-    });
+    });*/
+    var finalNoteString = "fgcgacAafgcccdfffgcgacAafgcccdffdeffgedcddefcccgddefefgedcddefdcgggagfgafgggagcdefdgagcdfdaagcdfdggfedcdfedfgedcccgfcdfdaagcdfdcefedcdfdfgedccgfdfdfgedcddefdcccgagfdfdfdfgedcddefdcddefdcggagfgagggagcccdefdgagcdfdaagcdfdggfedcdfdfgedccgfcdfdaagcdfdaefedcdfdfgedccgfcdfdaagcdfdggfedcdfdfgedcccgfcdfdaagcdfdggfedcdfdfgedccgf";
+    saveToFDC(convertInput(finalNoteString));
 }
 
 //console.log(midiArray);
@@ -31,8 +33,8 @@ function outputMIDI(midiArray){
     //for(var i = 0; i < midiArray.track[0].event.length; i++){
 
 
-    var trackToUse = midiArray.formatType;
-    var channelToUse = 0;
+    var trackToUse = 11;
+    var channelToUse = 6;
 
     var melodyTrack = midiArray.track[trackToUse];
     var melodyDeltaTime = 0;
@@ -46,7 +48,7 @@ function outputMIDI(midiArray){
         //console.log(midiArray.track[midiArray.formatType])
         var midiEvent = melodyTrack.event[i];
         
-        console.log(midiEvent);
+        //console.log(midiEvent);
 
         //console.log(melodyDeltaTime);
         melodyDeltaTime += midiEvent.deltaTime;

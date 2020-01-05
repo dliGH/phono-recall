@@ -52,10 +52,9 @@ function createFDCObjectList(lines){
 }
 
 function FDCtoString(FDC){
-    var charCode = ["0", "1", "2", "3", "4","5", 
-        "6", "7", "8", "9", "A", "B"];
-    //var charCode = ["abcdef", "abcdez", "abcdyz", "abcxyz", "abwxyz", "avwxyz", 
-    //    "uvwxyz", "uvwxyf", "uv"];
+    var charCode = "0123456789AB";
+//    var charCode = ["abcdef", "abcdez", "abcdyz", "abcxyz", "abwxyz", "avwxyz", 
+//        "uvwxyz", "uvwxyf", "uvwxef", "uvwdef", "uvcdef", "ubcdef"];
     var intervalList = FDC.split(" ");
     var intervalNum = 0;
     var songString = "";
