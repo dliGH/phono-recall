@@ -32,7 +32,7 @@ module.exports = function songMatchOutput(FDCObjectList, res){
         middle += '</div>\n';*/
         
         //calculate percentage
-        var percentMatch = (1-FDCObjectList[i].score)*100;
+        var percentMatch = (FDCObjectList[i].score)*100;
         //rounding
         percentMatch = Math.round(percentMatch).toFixed(1);
         //output percentage
