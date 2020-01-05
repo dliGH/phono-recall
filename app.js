@@ -86,11 +86,11 @@ function outputMIDI(midiArray){
 
 function saveToFDC(intervals){
     var stringOutput = "";
-    for(var i = 0; i < intervals.length; i++){
+    for(var i = 0; i < intervals.length-1; i++){
         stringOutput += intervals[i] + " ";
     }
 
-    stringOutput += "-1";
+    stringOutput += intervals[intervals.length-1];
 
     fs.writeFile("songsPreHuman.fdc", stringOutput, function(err) {
         if(err) {
