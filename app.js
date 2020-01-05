@@ -11,6 +11,7 @@ let fs = require('fs')
 function main(){
     var midiArray;
 
+    /*
     //put in the hard coded file here!!!
     fs.readFile('./Ending.mid', 'base64', function (err,data) {
         // Parse the obtainer base64 string ...
@@ -19,7 +20,9 @@ function main(){
         console.log(midiArray);
 
         outputMIDI(midiArray);
-    });
+    });*/
+    var finalNoteString = "fgcgacAafgcccdfffgcgacAafgcccdffdeffgedcddefcccgddefefgedcddefdcgggagfgafgggagcdefdgagcdfdaagcdfdggfedcdfedfgedcccgfcdfdaagcdfdcefedcdfdfgedccgfdfdfgedcddefdcccgagfdfdfdfgedcddefdcddefdcggagfgagggagcccdefdgagcdfdaagcdfdggfedcdfdfgedccgfcdfdaagcdfdaefedcdfdfgedccgfcdfdaagcdfdggfedcdfdfgedcccgfcdfdaagcdfdggfedcdfdfgedccgf";
+    saveToFDC(convertInput(finalNoteString));
 }
 
 //console.log(midiArray);
@@ -32,8 +35,8 @@ function outputMIDI(midiArray){
     //for(var i = 0; i < midiArray.track[0].event.length; i++){
 
 
-    var trackToUse = midiArray.formatType;
-    var channelToUse = 0;
+    var trackToUse = 11;
+    var channelToUse = 6;
 
     var melodyTrack = midiArray.track[trackToUse];
     var melodyDeltaTime = 0;
@@ -47,7 +50,7 @@ function outputMIDI(midiArray){
         //console.log(midiArray.track[midiArray.formatType])
         var midiEvent = melodyTrack.event[i];
         
-        console.log(midiEvent);
+        //console.log(midiEvent);
 
         //console.log(melodyDeltaTime);
         melodyDeltaTime += midiEvent.deltaTime;
@@ -83,11 +86,11 @@ function outputMIDI(midiArray){
 
 function saveToFDC(intervals){
     var stringOutput = "";
-    for(var i = 0; i < intervals.length; i++){
+    for(var i = 0; i < intervals.length-1; i++){
         stringOutput += intervals[i] + " ";
     }
 
-    stringOutput += "-1";
+    stringOutput += intervals[intervals.length-1];
 
     fs.writeFile("songsPreHuman.fdc", stringOutput, function(err) {
         if(err) {
