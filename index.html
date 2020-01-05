@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ecstatic-cori-7ac946.netlify.com/final.png">
+<script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.hero-image {
+  background-image: url("https://ecstatic-cori-7ac946.netlify.com/RainbowBackground.png");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+.hero-subtext {
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+.hero-blurb {
+  text-align: center;
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+.notesFlexContainer {
+   overflow: hidden;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+table.note {
+   margin-right: 1%;
+   margin-left: 1%;
+   margin-bottom: 15px;
+   table-layout: fixed;
+   border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+
+<div class="hero-image">
+  <div class="hero-text">
+    <b><i><h1 style="font-size:150px">PhonoRecall</h1> </i></b>
+  </div>
+  <div class="hero-subtext">
+    <h1 style="font-size:25px">Curing your "earworms" one song at a time</h1>
+  </div>
+  <div class="hero-blurb">
+  <p style="font-size:15px">To use our intuitive system, just press the up and down arrows to change pitches, the hold button to extend the length of a note, the rest button to account for pauses in the rhythms and the speed buttons to adjust the tempo!</p>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="notesFlexContainer">
+   <table class="note">
+      <tr align="center"><td><button onclick="up(0)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="one" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(0)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(0)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(0)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(1)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="two" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(1)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(1)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(1)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(2)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="three" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(2)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(2)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(2)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(3)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="four" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(3)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(3)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(3)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(4)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="five" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(4)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(4)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(4)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(5)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="six" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(5)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(5)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(5)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(6)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="seven" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(6)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(6)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(6)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(7)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="eight" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(7)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(7)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(7)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(8)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="nine" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(8)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(8)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(8)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(9)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="ten" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(9)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(9)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(9)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(10)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="eleven" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(10)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(10)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(10)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(11)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="twelve" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(11)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(11)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(11)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(12)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="thirteen" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(12)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(12)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(12)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(13)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="fourteen" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(13)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(13)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(13)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(14)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="fifteen" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(14)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(14)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(14)">Rest</button></td></tr>
+   </table>
+   <table class="note">
+      <tr align="center"><td><button onclick="up(15)">&#9650;</button></td></tr>
+      <tr align="center"><td><img id="sixteen" width="50px" height="350px" src="https://ecstatic-cori-7ac946.netlify.com/G.png"></img></td></tr>
+      <tr align="center"><td><button onclick="down(15)">&#9660;</button></td></tr>
+      <tr align="center"><td><button onclick="hold(15)">Hold</button></td></tr>
+      <tr align="center"><td><button onclick="rest(15)">Rest</button></td></tr>
+   </table>
+</div>
+
+<div align="center">
+   <b><p id="currentspeed">Medium</p></b>
+   <button onclick="speed('Slow')"> > </button> Slow
+   <button onclick="speed('Medium')"> >> </button> Med
+   <button onclick="speed('Fast')"> >>> </button> Fast
+</div>
+<br>
+<div align="center">
+   <button onclick="playSong()">&#9654;</button> Play
+</div>
+<br>
+<form action="/myform" method="GET">
+   <input type="hidden" id="noteInput" name="noteInput" value= outputToBack>
+   <div align="center">
+      <input type="submit" value="Search" />
+   </div>
+</form>
+  
+<script>
+var notes = [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9];
+var pos = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen"];
+var results = ["x","-","c","C","d","D","e","f","F","g","G","a","A","b","c"];
+var names = ["rest.png","hold.png","lowC.png","CSharp.png","D.png","DSharp.png","E.png","F.png","FSharp.png","G.png","GSharp.png","A.png","ASharp.png","B.png","highC.png"];
+function up(x) {
+   if(x === undefined)
+      return;
+   notes[x]++;
+   <!-----Overflow the note selection----->
+   if(notes[x] > 14)
+      notes[x] = 0;
+   document.getElementById(pos[x]).src = "https://ecstatic-cori-7ac946.netlify.com/" + names[notes[x]];
+   update();
+}
+function down(y) {
+   if(y === undefined)
+      return;
+   notes[y]--;
+   <!-----Overflow the note selection----->
+   if(notes[y] < 0)
+      notes[y] = 14;
+   document.getElementById(pos[y]).src = "https://ecstatic-cori-7ac946.netlify.com/" + names[notes[y]];
+   update();
+}
+  
+function hold(x) {
+   if(x === undefined)
+      return;
+   notes[x] = 1;
+   document.getElementById(pos[x]).src = "https://ecstatic-cori-7ac946.netlify.com/" + names[notes[x]];
+   update();
+}
+  
+function rest(x) {
+   if(x === undefined)
+      return;
+   notes[x] = 0;
+   document.getElementById(pos[x]).src = "https://ecstatic-cori-7ac946.netlify.com/" + names[notes[x]];
+   update();
+}
+  
+var spd = "Medium";
+function speed(s) {
+   document.getElementById("currentspeed").innerHTML = s;
+   spd = s;
+}
+
+var outputToBack;
+function update(){
+   outputToBack = "";
+   for(var i = 0; i < notes.length; i++){
+      outputToBack += results[notes[i]];
+   }
+   document.getElementById("noteInput").value = outputToBack;
+}
+
+  update();
+
+function playSong(){
+
+   var songNotesList = [];
+   var beatS = 0.2;
+   if(spd == "Medium")
+      beatS = 0.4;
+   else if(spd == "Slow")
+      beatS = 0.8;
+
+   for(var i = 0; i < 16; i++){
+      if(notes[i] == 1){
+         if(songNotesList.length != 0){
+            songNotesList[songNotesList.length-1].duration += beatS;
+         }
+      } else if(notes[i] == 0){
+         var curNote = new Object;
+         curNote.pitch = -1;
+         curNote.duration = beatS;
+         songNotesList.push(curNote);
+      } else {
+         var curNote = new Object;
+         curNote.pitch = 440.0*Math.pow(2, (notes[i]-11.0)/12.0);
+         curNote.duration = 0.75*beatS;
+         songNotesList.push(curNote);
+      }
+   }
+
+   //create a synth and connect it to the master output (your speakers)
+   var synth = new Tone.Synth().toMaster();
+
+   //synth.triggerAttackRelease("C4", 1.0);
+   //play a middle 'C' for the duration of an 8th note
+
+   
+   var id = Tone.Transport.scheduleRepeat(function(time){
+      if(songNotesList.length != 0){
+         console.log(songNotesList[0].pitch);
+         console.log(songNotesList[0].duration);
+         if(songNotesList[0].pitch != -1){
+            synth.triggerAttackRelease(songNotesList[0].pitch, songNotesList[0].duration);
+         }
+         if(songNotesList[0].duration <= beatS){
+            songNotesList.shift();
+         } else {
+            //"Cancel" and shorten the note for next round
+            songNotesList[0].pitch = -1;
+            songNotesList[0].duration -= beatS;
+         }
+      }
+   }, beatS);
+
+   Tone.Transport.start();
+}
+
+</script>
+  
+</script>
+
+</body>
+</html>
