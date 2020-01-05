@@ -23,7 +23,7 @@ module.exports = function readInFDC(filepath, FDC, res){
             console.log(FDCObjectList[i]);
         }*/
 
-        var closestSongs = getClosestSongs(FDCObjectList, FDCtoString(FDC));
+        var closestSongs = getClosestSongs(FDCObjectList, FDC);
         for(var i = 0; i < closestSongs.length; i++){
             console.log(closestSongs[i]);
         }
@@ -40,7 +40,7 @@ function createFDCObjectList(lines){
         var FDCObject = new Object;
         
         FDCObject.songTitle = lines[lineNum];
-        FDCObject.songString = FDCtoString(lines[lineNum + 1]);
+        FDCObject.songFDC = lines[lineNum + 1];
         FDCObject.mpegPath = lines[lineNum + 2];
 
         FDCObjectList.push(FDCObject);
@@ -51,8 +51,9 @@ function createFDCObjectList(lines){
     return FDCObjectList;
 }
 
+/*
 function FDCtoString(FDC){
-    var charCode = "0123456789AB";
+    var charCode = "abcdefghijkl";
 //    var charCode = ["abcdef", "abcdez", "abcdyz", "abcxyz", "abwxyz", "avwxyz", 
 //        "uvwxyz", "uvwxyf", "uvwxef", "uvwdef", "uvcdef", "ubcdef"];
     var intervalList = FDC.split(" ");
@@ -64,9 +65,10 @@ function FDCtoString(FDC){
     }
     return songString;
 }
+*/
 
-function getClosestSongs(FDCObjectList, mainSongString){
-    var options = {
+function getClosestSongs(FDCObjectList, testString){
+    /*var options = {
         shouldSort: true,
         tokenize: true,
         findAllMatches: true,
@@ -81,8 +83,51 @@ function getClosestSongs(FDCObjectList, mainSongString){
         ]
     };
     var fuse = new Fuse(FDCObjectList, options);
-    var result = fuse.search(mainSongString);
+    var result = fuse.search(mainSongString);*/
+
+    //console.log(getScore(FDCObjectList[0], testString));
+
+    //console.log(getScore(FDCObjectList[1], testString));
+    
+    //console.log(getScore(FDCObjectList[2], testString));
+
+    
+    //console.log(getScore(FDCObjectList[3], testString));
+
+    var result = [];
+
+    for(var i = 0; i < FDCObjectList.length; i++){
+        var thing = new Object;
+        thing.item = FDCObjectList[i];
+        thing.score = getScore(thing.item, testString);
+        result.push(thing);
+        console.log(thing.score);
+    }
+    
+    result.sort(function(thingA, thingB){return thingB.score-thingA.score});
     return result;
+}
+
+function getScore(FDCObject, testString){
+    var maxScore = 0;
+    var testIntervalList = testString.split(" ");
+    var songIntervalList = FDCObject.songFDC.split(" ");
+
+    for(var i = 0; i < songIntervalList.length - testIntervalList.length + 1; i++){
+        var compIntervalList = songIntervalList.slice(i, i+testIntervalList.length);
+
+        var score = 0;
+        for(var j = 0; j < compIntervalList.length; j++){
+            var dist = Math.abs(compIntervalList[j] - testIntervalList[j]);
+            dist = Math.min(dist, 12-dist);
+            //console.log(dist);
+            //score += 84 - (dist*dist + 8*dist);
+            score += 1.0 - 0.1*dist - 0.05*dist*dist;
+        }
+
+        if(score > maxScore) maxScore = score;
+    }
+    return maxScore/(testIntervalList.length);
 }
 
 

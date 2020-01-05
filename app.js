@@ -21,7 +21,7 @@ function main(){
 
         outputMIDI(midiArray);
     });*/
-    var finalNoteString = "fgcgacAafgcccdfffgcgacAafgcccdffdeffgedcddefcccgddefefgedcddefdcgggagfgafgggagcdefdgagcdfdaagcdfdggfedcdfedfgedcccgfcdfdaagcdfdcefedcdfdfgedccgfdfdfgedcddefdcccgagfdfdfdfgedcddefdcddefdcggagfgagggagcccdefdgagcdfdaagcdfdggfedcdfdfgedccgfcdfdaagcdfdaefedcdfdfgedccgfcdfdaagcdfdggfedcdfdfgedcccgfcdfdaagcdfdggfedcdfdfgedccgf";
+    var finalNoteString = "cDfDfffAGgfggAcgfAAgAAccDfDfffAGgfggAcgfAAgAAcDAADDfAAAgGgfDfgAgccdDDddDfGgfDggfefccddDAADDfAAAgGgfDfgGgccdDDddDfGgfDggfefgGgDDdDDdffDdcdDDdfdcADDdDDdffDdDfgGgfDfgcDfDfffAGgfggAcgfdddDfdddDfDDcDfDfffAGgfggAcgfAAgAAccDfDfffAGgfggAcgfAAgAAc";
     saveToFDC(convertInput(finalNoteString));
 }
 
