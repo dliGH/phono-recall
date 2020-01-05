@@ -22,9 +22,8 @@ module.exports = function songMatchOutput(FDCObjectList, res){
             //trying
         middle += '<div align="center">\n';
         middle += '<audio controls="controls">'
-          +  '<source src="' + FDCObjectList.item. + '" type="audio/mpeg">'
+          +  '<source src="' + FDCObjectList.item.mpegPath + '" type="audio/mpeg">'
           +  '</audio>';
-
         middle += '</div>\n';
         
         //calculate percentage
